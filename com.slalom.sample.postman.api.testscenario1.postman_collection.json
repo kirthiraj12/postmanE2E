@@ -1,0 +1,1208 @@
+{
+	"info": {
+		"name": "com.slalom.sample.postman.api.testscenario2",
+		"_postman_id": "33a3cca1-07ac-0785-6c0b-ea107ab14f28",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Test-Case-001-Validation",
+			"description": "",
+			"item": [
+				{
+					"name": "Post request sample",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "31c5f205-fa5e-4e8d-a4eb-48c35b6f901d",
+								"type": "text/javascript",
+								"exec": [
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody)",
+									"",
+									"tests[\"status code is 201\"]= responseCode.code ===201;",
+									"",
+									"",
+									"postman.setEnvironmentVariable(\"id\",data.id);",
+									"",
+									"if(responseCode.code === 201)",
+									"{",
+									"    try{",
+									"    ",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    ",
+									"    tests[\"Body matches string userId\"] = responseBody.has(\"userId\");",
+									"    tests[\"Body matches string body\"] =  responseBody.has(\"body\");",
+									"    tests[\"Body matches string  userId\"] = responseBody.has(\"userId\");",
+									"    ",
+									"     tests[\"Body matches string  id\"] = responseBody.has(\"id\");",
+									"     ",
+									"    ",
+									"}",
+									"",
+									"catch(e) {",
+									" console.log(\"cannot parse response, check the result\");",
+									" ",
+									" exit;",
+									"    ",
+									"}",
+									"",
+									"}"
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "3686c7fc-10d9-42b5-a77c-28a6cc5897b5",
+								"type": "text/javascript",
+								"exec": [
+									"//**** date calculation ****//",
+									"",
+									"var d = new Date();",
+									"",
+									"//***** base name*****//",
+									"",
+									"var d = new Date();",
+									"var n = d.getTime();",
+									"",
+									"var n = \"QA Testing\" + d+ n;",
+									"",
+									"postman.setEnvironmentVariable(\"baseName\",n);",
+									"",
+									"//**** Current time ****//",
+									"",
+									"var d = new Date();",
+									"var n = d.getTime();",
+									"",
+									"postman.setEnvironmentVariable(\"currentTime\",n);",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   { \"title\": \"foo\",\n      \"body\": \"bar\",\n      \"userId\" : \"123\" \n   }"
+						},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/posts",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET all user information ",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c2963259-eb9b-4da8-a4a1-2b0311746bd1",
+								"type": "text/javascript",
+								"exec": [
+									"//**** date calculation ****//",
+									"",
+									"var d = new Date();",
+									"",
+									"//***** base name*****//",
+									"",
+									"var d = new Date();",
+									"var n = d.getTime();",
+									"",
+									"var n = \"QA Testing\" + d+ n;",
+									"",
+									"postman.setEnvironmentVariable(\"baseName\",n);",
+									"",
+									"//**** Current time ****//",
+									"",
+									"var d = new Date();",
+									"var n = d.getTime();",
+									"",
+									"postman.setEnvironmentVariable(\"currentTime\",n);",
+									"",
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "9ad3b14e-21b9-4467-ba75-275f45b1f290",
+								"type": "text/javascript",
+								"exec": [
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody)",
+									"",
+									"tests[\"status code is 200\"]= responseCode.code ===200;",
+									"",
+									"",
+									"//postman.setEnvironmentVariable(\"access_token\",data.access_token);",
+									"",
+									"if(responseCode.code === 200)",
+									"{",
+									"    try{",
+									"    ",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    ",
+									"    tests[\"Body matches string userId\"] = responseBody.has(\"userId\");",
+									"    tests[\"Body matches string id\"] =  responseBody.has(\"id\");",
+									"    tests[\"Body matches string access title\"] = responseBody.has(\"title\");",
+									"    ",
+									"     tests[\"Body matches string access body\"] = responseBody.has(\"body\");",
+									"     ",
+									"    ",
+									"}",
+									"",
+									"catch(e) {",
+									" console.log(\"cannot parse response, check the result\");",
+									" ",
+									" exit;",
+									"    ",
+									"}",
+									"",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/posts",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET comments information",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a06ab0c7-a311-4c62-819d-31392b646dc0",
+								"type": "text/javascript",
+								"exec": [
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody)",
+									"",
+									"tests[\"status code is 200\"]= responseCode.code ===200;",
+									"",
+									"",
+									"//postman.setEnvironmentVariable(\"access_token\",data.access_token);",
+									"",
+									"if(responseCode.code === 200)",
+									"{",
+									"    try{",
+									"    ",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    ",
+									"    tests[\"Body matches string postId\"] = responseBody.has(\"postId\");",
+									"    tests[\"Body matches string id\"] =  responseBody.has(\"id\");",
+									"    tests[\"Body matches string access email\"] = responseBody.has(\"email\");",
+									"    ",
+									"     tests[\"Body matches string access body\"] = responseBody.has(\"body\");",
+									"     ",
+									"    ",
+									"}",
+									"",
+									"catch(e) {",
+									" console.log(\"cannot parse response, check the result\");",
+									" ",
+									" exit;",
+									"    ",
+									"}",
+									"",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/comments/{{id}}",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"comments",
+								"{{id}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET todo information",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "23c53fe6-c2b3-422a-803e-161334e6ce4f",
+								"type": "text/javascript",
+								"exec": [
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody)",
+									"",
+									"tests[\"status code is 200\"]= responseCode.code ===200;",
+									"",
+									"",
+									"//postman.setEnvironmentVariable(\"access_token\",data.access_token);",
+									"",
+									"if(responseCode.code === 200)",
+									"{",
+									"    try{",
+									"    ",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    ",
+									"    tests[\"Body matches string userId\"] = responseBody.has(\"userId\");",
+									"    tests[\"Body matches string id\"] =  responseBody.has(\"id\");",
+									"    tests[\"Body matches string  title\"] = responseBody.has(\"title\");",
+									"    ",
+									"     tests[\"Body matches string  completed\"] = responseBody.has(\"completed\");",
+									"     ",
+									"    ",
+									"}",
+									"",
+									"catch(e) {",
+									" console.log(\"cannot parse response, check the result\");",
+									" ",
+									" exit;",
+									"    ",
+									"}",
+									"",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/todos/{{id}}",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"todos",
+								"{{id}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET user information for a single user ",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c2963259-eb9b-4da8-a4a1-2b0311746bd1",
+								"type": "text/javascript",
+								"exec": [
+									"//**** date calculation ****//",
+									"",
+									"var d = new Date();",
+									"",
+									"//***** base name*****//",
+									"",
+									"var d = new Date();",
+									"var n = d.getTime();",
+									"",
+									"var n = \"QA Testing\" + d+ n;",
+									"",
+									"postman.setEnvironmentVariable(\"baseName\",n);",
+									"",
+									"//**** Current time ****//",
+									"",
+									"var d = new Date();",
+									"var n = d.getTime();",
+									"",
+									"postman.setEnvironmentVariable(\"currentTime\",n);",
+									"",
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "44022d7d-3af4-49ef-81db-0a8661682981",
+								"type": "text/javascript",
+								"exec": [
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody)",
+									"",
+									"tests[\"status code is 200\"]= responseCode.code ===200;",
+									"",
+									"",
+									"if(responseCode.code === 200)",
+									"{",
+									"    try{",
+									"    ",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    postman.setEnvironmentVariable(\"getRequestUserid\",responseBody);",
+									"    ",
+									"    tests[\"Body matches string userId\"] = responseBody.has(\"userId\");",
+									"    tests[\"Body matches string id\"] =  responseBody.has(\"id\");",
+									"    tests[\"Body matches string access title\"] = responseBody.has(\"title\");",
+									"    ",
+									"     tests[\"Body matches string access body\"] = responseBody.has(\"body\");",
+									"     ",
+									"    ",
+									"}",
+									"",
+									"catch(e) {",
+									" console.log(\"cannot parse response, check the result\");",
+									" ",
+									" exit;",
+									"    ",
+									"}",
+									"",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/posts/1",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"posts",
+								"1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PUT resource  copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6cd018e3-a50c-477f-80fd-af8486a6655b",
+								"type": "text/javascript",
+								"exec": [
+									"var PutRequest = JSON.parse(environment[\"getRequestUserid\"]);",
+									"",
+									"//delete PutRequest.",
+									"",
+									" //PutRequest.state = \"update\"",
+									" ",
+									" postman.setEnvironmentVariable(\"putBody\", JSON.stringify(PutRequest));"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "ae9ec507-d419-4f74-98ca-9ec028dec691",
+								"type": "text/javascript",
+								"exec": [
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody)",
+									"",
+									"tests[\"status code is 200\"]= responseCode.code ===200;",
+									"",
+									"",
+									"if(responseCode.code === 200)",
+									"{",
+									"    try{",
+									"    ",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    postman.setEnvironmentVariable(\"getRequestUserid\",responseBody);",
+									"    ",
+									"    tests[\"Body matches string userId\"] = responseBody.has(\"userId\");",
+									"    tests[\"Body matches string id\"] =  responseBody.has(\"id\");",
+									"    tests[\"Body matches string access title\"] = responseBody.has(\"title\");",
+									"    ",
+									"     tests[\"Body matches string access body\"] = responseBody.has(\"body\");",
+									"     ",
+									"    ",
+									"}",
+									"",
+									"catch(e) {",
+									" console.log(\"cannot parse response, check the result\");",
+									" ",
+									" exit;",
+									"    ",
+									"}",
+									"",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{putBody}}"
+						},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/posts/{{id}}",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"posts",
+								"{{id}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "DELTE A resource  copy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/posts/1",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"posts",
+								"1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test-Case-002-Validation",
+			"description": "",
+			"item": [
+				{
+					"name": "Post request sample for test case 2 ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "83468024-db48-4104-80ad-323b2eb8a442",
+								"type": "text/javascript",
+								"exec": [
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody)",
+									"",
+									"tests[\"status code is 201\"]= responseCode.code ===201;",
+									"",
+									"",
+									"postman.setEnvironmentVariable(\"id2\",data.id);",
+									"",
+									"if(responseCode.code === 201)",
+									"{",
+									"    try{",
+									"    ",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    ",
+									"    tests[\"Body matches string userId\"] = responseBody.has(\"userId\");",
+									"    tests[\"Body matches string body\"] =  responseBody.has(\"body\");",
+									"    tests[\"Body matches string  userId\"] = responseBody.has(\"userId\");",
+									"    ",
+									"     tests[\"Body matches string  id\"] = responseBody.has(\"id\");",
+									"     ",
+									"    ",
+									"}",
+									"",
+									"catch(e) {",
+									" console.log(\"cannot parse response, check the result\");",
+									" ",
+									" exit;",
+									"    ",
+									"}",
+									"",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   { \"title\": \"foo\",\n      \"body\": \"bar\",\n      \"userId\" : \"1\" \n   }"
+						},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/posts",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET all user information ",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "16ec47b9-9b45-46f3-a923-9d88e304ce78",
+								"type": "text/javascript",
+								"exec": [
+									"//**** date calculation ****//",
+									"",
+									"var d = new Date();",
+									"var n = d.getTime() + 7878709760;",
+									"",
+									"postman.setEnvironmentVariable(\"FutureDate\",n);",
+									"",
+									"//***** base name*****//",
+									"",
+									"var d = new Date();",
+									"var n = d.getTime();",
+									"",
+									"var n = \"QA Testing\" + d+ n;",
+									"",
+									"postman.setEnvironmentVariable(\"baseName\",n);",
+									"",
+									"//**** Current time ****//",
+									"",
+									"var d = new Date();",
+									"var n = d.getTime();",
+									"",
+									"postman.setEnvironmentVariable(\"currentTime\",n);",
+									"",
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "bde38441-8ecc-440c-8dc5-5718001d019c",
+								"type": "text/javascript",
+								"exec": [
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody)",
+									"",
+									"tests[\"status code is 200\"]= responseCode.code ===200;",
+									"",
+									"",
+									"//postman.setEnvironmentVariable(\"access_token\",data.access_token);",
+									"",
+									"if(responseCode.code === 200)",
+									"{",
+									"    try{",
+									"    ",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    ",
+									"    tests[\"Body matches string userId\"] = responseBody.has(\"userId\");",
+									"    tests[\"Body matches string id\"] =  responseBody.has(\"id\");",
+									"    tests[\"Body matches string access title\"] = responseBody.has(\"title\");",
+									"    ",
+									"     tests[\"Body matches string access body\"] = responseBody.has(\"body\");",
+									"     ",
+									"    ",
+									"}",
+									"",
+									"catch(e) {",
+									" console.log(\"cannot parse response, check the result\");",
+									" ",
+									" exit;",
+									"    ",
+									"}",
+									"",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/posts",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET comments information for test case 2 ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6620c98c-7ea5-4eac-b441-850123253ad7",
+								"type": "text/javascript",
+								"exec": [
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody)",
+									"",
+									"tests[\"status code is 200\"]= responseCode.code ===200;",
+									"",
+									"",
+									"//postman.setEnvironmentVariable(\"access_token\",data.access_token);",
+									"",
+									"if(responseCode.code === 200)",
+									"{",
+									"    try{",
+									"    ",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    ",
+									"    tests[\"Body matches string postId\"] = responseBody.has(\"postId\");",
+									"    tests[\"Body matches string id\"] =  responseBody.has(\"id\");",
+									"    tests[\"Body matches string access email\"] = responseBody.has(\"email\");",
+									"    ",
+									"     tests[\"Body matches string access body\"] = responseBody.has(\"body\");",
+									"     ",
+									"    ",
+									"}",
+									"",
+									"catch(e) {",
+									" console.log(\"cannot parse response, check the result\");",
+									" ",
+									" exit;",
+									"    ",
+									"}",
+									"",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/comments/{{id2}}",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"comments",
+								"{{id2}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET todo information for test cae 2 ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/todos/{{id2}}",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"todos",
+								"{{id2}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET Album information for test case 2 ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "83291520-4b8c-4798-bdbd-a90caa2d73de",
+								"type": "text/javascript",
+								"exec": [
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody)",
+									"",
+									"tests[\"status code is 201\"]= responseCode.code ===200;",
+									"",
+									"",
+									"if(responseCode.code === 200)",
+									"{",
+									"    try{",
+									"    ",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    ",
+									"    tests[\"Body matches string userId\"] = responseBody.has(\"userId\");",
+									"    tests[\"Body matches string id\"] =  responseBody.has(\"id\");",
+									"    tests[\"Body matches string access title\"] = responseBody.has(\"title\");",
+									"    ",
+									"     tests[\"Body matches string access body\"] = responseBody.has(\"body\");",
+									"     ",
+									"    ",
+									"}",
+									"",
+									"catch(e) {",
+									" console.log(\"cannot parse response, check the result\");",
+									" ",
+									" exit;",
+									"    ",
+									"}",
+									"",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/albums/3",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"albums",
+								"3"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET user information for a single user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c2963259-eb9b-4da8-a4a1-2b0311746bd1",
+								"type": "text/javascript",
+								"exec": [
+									"//**** date calculation ****//",
+									"",
+									"var d = new Date();",
+									"",
+									"//***** base name*****//",
+									"",
+									"var d = new Date();",
+									"var n = d.getTime();",
+									"",
+									"var n = \"QA Testing\" + d+ n;",
+									"",
+									"postman.setEnvironmentVariable(\"baseName\",n);",
+									"",
+									"//**** Current time ****//",
+									"",
+									"var d = new Date();",
+									"var n = d.getTime();",
+									"",
+									"postman.setEnvironmentVariable(\"currentTime\",n);",
+									"",
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "f1952890-1607-4dbb-ac84-c2d1b659e2bc",
+								"type": "text/javascript",
+								"exec": [
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody)",
+									"",
+									"tests[\"status code is 200\"]= responseCode.code ===200;",
+									"",
+									"",
+									"if(responseCode.code === 200)",
+									"{",
+									"    try{",
+									"    ",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    postman.setEnvironmentVariable(\"getRequestUserid2\",responseBody);",
+									"    ",
+									"    tests[\"Body matches string userId\"] = responseBody.has(\"userId\");",
+									"    tests[\"Body matches string id\"] =  responseBody.has(\"id\");",
+									"    tests[\"Body matches string access title\"] = responseBody.has(\"title\");",
+									"    ",
+									"     tests[\"Body matches string access body\"] = responseBody.has(\"body\");",
+									"     ",
+									"    ",
+									"}",
+									"",
+									"catch(e) {",
+									" console.log(\"cannot parse response, check the result\");",
+									" ",
+									" exit;",
+									"    ",
+									"}",
+									"",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/posts/1",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"posts",
+								"1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PUT resource ",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5db29d5e-e73f-4328-9c31-32c2d38d24c0",
+								"type": "text/javascript",
+								"exec": [
+									"var PutRequest = JSON.parse(environment[\"getRequestUserid2\"]);",
+									"",
+									"//delete PutRequest.",
+									"",
+									" //PutRequest.state = \"update\"",
+									" ",
+									" postman.setEnvironmentVariable(\"putBody\", JSON.stringify(PutRequest));"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{putBody}}"
+						},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/posts",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET photo information",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/photos/1",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"photos",
+								"1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test-Case-003-Validation",
+			"description": "",
+			"item": [
+				{
+					"name": "GET all user information  for test case 3 ",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "16ec47b9-9b45-46f3-a923-9d88e304ce78",
+								"type": "text/javascript",
+								"exec": [
+									"//**** date calculation ****//",
+									"",
+									"var d = new Date();",
+									"var n = d.getTime() + 7878709760;",
+									"",
+									"postman.setEnvironmentVariable(\"FutureDate\",n);",
+									"",
+									"//***** base name*****//",
+									"",
+									"var d = new Date();",
+									"var n = d.getTime();",
+									"",
+									"var n = \"QA Testing\" + d+ n;",
+									"",
+									"postman.setEnvironmentVariable(\"baseName\",n);",
+									"",
+									"//**** Current time ****//",
+									"",
+									"var d = new Date();",
+									"var n = d.getTime();",
+									"",
+									"postman.setEnvironmentVariable(\"currentTime\",n);",
+									"",
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "014a6d1e-8539-43e3-b03d-0152fd05d5f3",
+								"type": "text/javascript",
+								"exec": [
+									"console.log(responseBody);",
+									"",
+									"var data = JSON.parse(responseBody)",
+									"",
+									"tests[\"status code is 200\"]= responseCode.code ===200;",
+									"",
+									"",
+									"//postman.setEnvironmentVariable(\"access_token\",data.access_token);",
+									"",
+									"if(responseCode.code === 200)",
+									"{",
+									"    try{",
+									"    ",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    ",
+									"    tests[\"Body matches string userId\"] = responseBody.has(\"userId\");",
+									"    tests[\"Body matches string id\"] =  responseBody.has(\"id\");",
+									"    tests[\"Body matches string access title\"] = responseBody.has(\"title\");",
+									"    ",
+									"     tests[\"Body matches string access body\"] = responseBody.has(\"body\");",
+									"     ",
+									"    ",
+									"}",
+									"",
+									"catch(e) {",
+									" console.log(\"cannot parse response, check the result\");",
+									" ",
+									" exit;",
+									"    ",
+									"}",
+									"",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/posts",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "e3ebd2b2-1b35-45fc-b293-d89a7483fe62",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "773e11b4-33d9-4f35-90e0-b2ae46eedbe5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
